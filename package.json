@@ -8,7 +8,7 @@
     "test": "cypress run",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve:build": "servor dist index.html 4200",
+    "serve:build": "servor dist/test-github-actions index.html 4200",
     "test:prebuild": "start-server-and-test start http-get://localhost:4200 test",
     "test:build": "start-server-and-test serve:build http-get://localhost:4200 test"
   },
