@@ -5,10 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "cypress run",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve:build": "servor dist index.html 4200 --reload"
+    "serve:build": "servor dist index.html 4200",
+    "test:prebuild": "start-server-and-test start http-get://localhost:4200 test",
+    "test:build": "start-server-and-test serve:build http-get://localhost:4200 test"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +46,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "servor": "^3.2.0",
+    "start-server-and-test": "^1.10.11",
     "ts-loader": "6.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
