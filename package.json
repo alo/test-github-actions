@@ -7,12 +7,12 @@
     "build": "ng build",
     "test": "cypress run --browser chrome",
     "test:firefox": "cypress run --browser firefox",
-    "test:edge": "cypress run --browser edge",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "serve:build": "servor dist/test-github-actions index.html 4200",
-    "test:prebuild": "start-server-and-test start http-get://localhost:4200 test:edge",
-    "test:build": "start-server-and-test serve:build http-get://localhost:4200 test"
+    "test:prebuild": "start-server-and-test start http-get://localhost:4200 test",
+    "test:build": "start-server-and-test serve:build http-get://localhost:4200 test",
+    "test:build:firefox": "start-server-and-test serve:build http-get://localhost:4200 test"
   },
   "private": true,
   "dependencies": {
