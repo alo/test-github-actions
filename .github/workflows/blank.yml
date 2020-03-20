@@ -20,13 +20,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - run: npm install
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
       
-      - run: npm run test:prebuild
-
-      - run: npm run build
-
-      - run: npm run test:build
+      #- run: npm run test:prebuild
+#
+      #- run: npm run build
+#
+      #- run: npm run test:build
 
       #- name: Cypress run
       #  uses: cypress-io/github-action@v1
