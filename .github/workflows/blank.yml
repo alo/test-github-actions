@@ -28,15 +28,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - run: npm install
-      
-      #- name: Run and test prebuild
-      - run: npm run test:prebuild
-#
-      - run: npm run build
-#
-      - run: npm run test:build
+      - name: Install Dependencies
+        run: npm install
 
+      - name: Test prebuild
+        run: npm run test:prebuild
+      #
+      - run: npm run build
+      #
+      - run: npm run test:build
       #- name: Cypress run
       #  uses: cypress-io/github-action@v1
       # Runs a single command using the runners shell
