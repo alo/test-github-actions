@@ -44,7 +44,7 @@ jobs:
         run: npm run test:build
 
       - name: Test production build firefox
-         run: npm run test:build:firefox
+        run: npm run test:build:firefox
 
       # - name: Run a multi-line script
       #   run: |
