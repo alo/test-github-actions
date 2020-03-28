@@ -47,7 +47,7 @@ jobs:
       - name: Cypress run on prod build
         uses: cypress-io/github-action@v1
         with:
-          start: npm run build:prod:stats && npm run serve:build
+          start: npm run otro
 
     # - name: Test production build
     #   run: npm run test:build

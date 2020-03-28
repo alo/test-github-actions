@@ -15,7 +15,8 @@
     "test:build": "start-server-and-test serve:build http-get://localhost:4200 test",
     "test:build:firefox": "start-server-and-test serve:build http-get://localhost:4200 test",
     "scully": "scully --nw",
-    "scully:serve": "scully serve"
+    "scully:serve": "scully serve",
+    "otro": "npm run build:prod:stats && npm run serve:build"
   },
   "private": true,
   "dependencies": {
