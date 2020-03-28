@@ -31,20 +31,25 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Lint
-        run: npm run lint
+      # - name: Lint
+      #   run: npm run lint
 
-      - name: Test prebuild
-        run: npm run test:prebuild
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          start: npm start
 
-      - name: Build production bundle 
-        run: npm run build
+      # - name: Test prebuild
+      #   run: npm run test:prebuild
 
-      - name: Test production build
-        run: npm run test:build
+      # - name: Build production bundle 
+      #   run: npm run build
 
-      - name: Test production build firefox
-        run: npm run test:build:firefox
+      # - name: Test production build
+      #   run: npm run test:build
+
+      # - name: Test production build firefox
+      #   run: npm run test:build:firefox
 
       # - name: Run a multi-line script
       #   run: |
