@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:prod:stats": "ng build --stats-json --prod",
-    "serve:build": "servor dist/test-github-actions index.html 4200",
+    "serve:build": "servor dist/static index.html 4200",
     "test:prebuild": "start-server-and-test start http-get://localhost:4200 test",
     "test:build": "start-server-and-test serve:build http-get://localhost:4200 test",
     "test:build:firefox": "start-server-and-test serve:build http-get://localhost:4200 test",
