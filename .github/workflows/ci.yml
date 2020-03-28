@@ -34,37 +34,31 @@ jobs:
       # - name: Lint
       #   run: npm run lint
 
-      # - name: Cypress run on prebuild 
+      # - name: Cypress run on prebuild
       #   uses: cypress-io/github-action@v1
       #   with:
       #     start: npm start
+      
+      - name: Build production bundle
+        run: |
+          npm run build:prod:stats
+          npm run scully
 
-    - name: Build production bundle
-      run: |
-        npm run build:prod:stats
-        npm run scully
-
-    - name: Cypress run on prebuild 
-      uses: cypress-io/github-action@v1
-      with:
-        start: npm run serve:build
-
+      - name: Cypress run on prebuild
+        uses: cypress-io/github-action@v1
+        with:
+          start: npm run serve:build
     # - name: Test production build
     #   run: npm run test:build
-
-      # - name: Test prebuild
-      #   run: npm run test:prebuild
-
-      # - name: Build production bundle 
-      #   run: npm run build
-
-      # - name: Test production build
-      #   run: npm run test:build
-
-      # - name: Test production build firefox
-      #   run: npm run test:build:firefox
-
-      # - name: Run a multi-line script
-      #   run: |
-      #     echo Add other actions to build,
-      #     echo test, and deploy your project.
+    # - name: Test prebuild
+    #   run: npm run test:prebuild
+    # - name: Build production bundle
+    #   run: npm run build
+    # - name: Test production build
+    #   run: npm run test:build
+    # - name: Test production build firefox
+    #   run: npm run test:build:firefox
+    # - name: Run a multi-line script
+    #   run: |
+    #     echo Add other actions to build,
+    #     echo test, and deploy your project.
