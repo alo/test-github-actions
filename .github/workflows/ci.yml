@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-    timeout-minutes: 10
+    timeout-minutes: 3
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -47,11 +47,9 @@ jobs:
       - name: Cypress run on prod build
         uses: cypress-io/github-action@v1
         with:
-          start: |
-            npm run build:prod:stats
-            npm run serve:build
+          start: npm run build:prod:stats && npm run serve:build
           wait-on: 'http://localhost:4200'
-          wait-on-timeout: 160
+          wait-on-timeout: 180
 
     # - name: Test production build
     #   run: npm run test:build
