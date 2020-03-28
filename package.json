@@ -14,7 +14,7 @@
     "test:prebuild": "start-server-and-test start http-get://localhost:4200 test",
     "test:build": "start-server-and-test serve:build http-get://localhost:4200 test",
     "test:build:firefox": "start-server-and-test serve:build http-get://localhost:4200 test",
-    "scully": "scully",
+    "scully": "scully --nw",
     "scully:serve": "scully serve"
   },
   "private": true,
