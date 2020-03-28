@@ -28,8 +28,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install Dependencies
-        run: npm install
+      # - name: Install Dependencies
+      #   run: npm install
 
       # - name: Lint
       #   run: npm run lint
@@ -39,15 +39,18 @@ jobs:
       #   with:
       #     start: npm start
 
-      - name: Build production bundle
-        run: |
-          npm run build:prod:stats
-          npm run scully
+      # - name: Build production bundle
+      #   run: |
+      #     npm run build:prod:stats
+      #     npm run scully
 
-      - name: Cypress run on prebuild
+      - name: Cypress run on prod build
         uses: cypress-io/github-action@v1
         with:
-          start: npm run serve:build
+          start: |
+            npm run build:prod:stats
+            npm run serve:build
+
     # - name: Test production build
     #   run: npm run test:build
     # - name: Test prebuild
