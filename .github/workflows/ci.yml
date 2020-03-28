@@ -48,6 +48,8 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           start: npm run otro
+          wait-on: 'http://localhost:4200'
+          wait-on-timeout: 160
 
     # - name: Test production build
     #   run: npm run test:build
