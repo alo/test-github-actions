@@ -47,7 +47,7 @@ jobs:
       - name: Cypress run on prod build
         uses: cypress-io/github-action@v1
         with:
-          start: npm run build:prod:stats && npm run serve:build
+          start: npm run otro
           wait-on: 'http://localhost:4200'
           wait-on-timeout: 180
 
