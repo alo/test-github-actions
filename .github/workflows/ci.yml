@@ -34,10 +34,23 @@ jobs:
       # - name: Lint
       #   run: npm run lint
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v1
-        with:
-          start: npm start
+      # - name: Cypress run on prebuild 
+      #   uses: cypress-io/github-action@v1
+      #   with:
+      #     start: npm start
+
+    - name: Build production bundle
+      run: |
+        npm run build:prod:stats
+        npm run scully
+
+    - name: Cypress run on prebuild 
+      uses: cypress-io/github-action@v1
+      with:
+        start: npm run serve:build
+
+    # - name: Test production build
+    #   run: npm run test:build
 
       # - name: Test prebuild
       #   run: npm run test:prebuild
