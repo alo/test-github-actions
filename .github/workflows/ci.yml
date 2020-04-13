@@ -24,17 +24,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # - name: Use Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v1
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-      # - uses: actions/cache@v1
-      #   with:
-      #     path: ~/.npm
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       # - name: Cache node modules
       #   uses: actions/cache@v1
@@ -51,48 +51,54 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install Dependencies
+      - name: Build project
         run: npm run build
 
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          # FIREBASE_PROJECT: name-of-the-project
-      # - name: Lint
-      #   run: npm run lint
-      # - name: Cypress run on prebuild
-      #   uses: cypress-io/github-action@v1
-      #   with:
-      #     start: npm start
-      # - name: Build production bundle
-      #   run: |
-      #     npm run build:prod:stats
-      #     npm run scully
-      # - name: Cypress run on prod build
-      #   uses: cypress-io/github-action@v1
-      #   with:
-      #     start: npm run otro
-      #     wait-on: 'http://localhost:4200'
-      #     wait-on-timeout: 180
-    # - name: Test production build
-    #   run: npm run test:build
-    # - name: Test prebuild
-    #   run: npm run test:prebuild
-    # - name: Build production bundle
-    #   run: npm run build
-    # - name: Test production build
-    #   run: npm run test:build
-    # - name: Test production build firefox
-    #   run: npm run test:build:firefox
-    # - name: Run a multi-line script
-    #   run: |
-    #     echo Add other actions to build,
-    #     echo test, and deploy your project.
+  # deploy:
+  #   name: Deploy
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Deploy to Firebase
+  #       uses: w9jds/firebase-action@master
+  #       with:
+  #         args: deploy --only hosting
+  #       env:
+  #         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  # FIREBASE_PROJECT: name-of-the-project
+  # - name: Lint
+  #   run: npm run lint
+  # - name: Cypress run on prebuild
+  #   uses: cypress-io/github-action@v1
+  #   with:
+  #     start: npm start
+  # - name: Build production bundle
+  #   run: |
+  #     npm run build:prod:stats
+  #     npm run scully
+  # - name: Cypress run on prod build
+  #   uses: cypress-io/github-action@v1
+  #   with:
+  #     start: npm run otro
+  #     wait-on: 'http://localhost:4200'
+  #     wait-on-timeout: 180
+  # - name: Test production build
+  #   run: npm run test:build
+  # - name: Test prebuild
+  #   run: npm run test:prebuild
+  # - name: Build production bundle
+  #   run: npm run build
+  # - name: Test production build
+  #   run: npm run test:build
+  # - name: Test production build firefox
+  #   run: npm run test:build:firefox
+  # - name: Run a multi-line script
+  #   run: |
+  #     echo Add other actions to build,
+  #     echo test, and deploy your project.
